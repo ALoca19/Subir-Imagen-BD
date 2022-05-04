@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+  //Metodo 01
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Select image to upload:
+        <input type="file" name="image"/>
+        <input type="submit" name="submit" value="UPLOAD"/>
+    </form>
+
+
+    //Metodo 02
+    <h4 class="text-center">Seleccione imagen a cargar</h4>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Archivos</label>
+          <div class="col-sm-8">
+            <input type="file" class="form-control" id="image" name="image" multiple>
+          </div>
+          <button name="submit" class="btn btn-primary">Cargar Imagen</button>
+        </div>
+
+
+  // Metodo 03
+        <div class="form-group">
+            <label for="image1"></label>
+            <div class="input-group">
+              <div class="custom-file"> <!--ESTE DIV ES EL EXAMINAR/BOWSER-->
+
+                <input type="file" class="form-control-file img2" name="image2" id="image2">
+              </div>
+              <div class="input-group-append"> <!--ESTE DIV ES EL UPLOAD O SUBIR-->
+                <input type="button" class="btn btn-primary upload" value="Subir">
+              </div>
+            </div>
+          </div>
+
+</body>
+</html>
