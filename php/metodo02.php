@@ -6,7 +6,17 @@ if (is_array($_FILES) && count($_FILES) > 0) {
         || ($_FILES["file"]["type"] == "image/gif")) {
         if (move_uploaded_file($_FILES["file"]["tmp_name"], "../image/".$_FILES['file']['name'])) {
             //more code here...
+            
+            include "conexion.php";
+            $urlImagen = "image/".$_FILES['file']['name'];
+            $nombreImage= $_FILES['file']['name'];
+            $query = "INSERT INTO `tabla imagen` ( nombre, `url`) VALUES ('$nombreImage', '$urlImagen')";
+            
+            $Resultado = $conexion -> query($query);
+           
+
             echo "image/".$_FILES['file']['name'];
+
         } else {
             echo 0;
         }
