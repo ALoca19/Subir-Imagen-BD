@@ -14,14 +14,14 @@ Al seleccionar la imagen se muestra a la primera, sin necesidad de precionar un 
 ## Notas:
 En la carpeta php, crea un archivo php llamado conexion y pon el siguiente codigo
 
-<?php
+< ? php
 	$servidor = "pon_tus_datos";
 	$usuario  = "pon_tus_datos";
 	$clave    = "pon_tus_datos";
 	$base     = "pon_tus_datos";
 
 	$conexion = mysqli_connect($servidor,$usuario,$clave,$base);
-?>
+? >
 
 
 En los apartados de php, has las modificaciones pertinentes para que se adapte a la tabla donde subiras las imagenes
