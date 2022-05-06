@@ -5,6 +5,65 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pruebas de Imagenes</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+
+    <!--Codigo de Script para el funcionamiento del metodo 02-->
+<script>
+$(document).ready(function() {
+    $(".upload").on('click', function() {
+        var formData = new FormData();
+        var files = $('#imageM2')[0].files[0];
+        formData.append('file',files);
+        $.ajax({
+            url: 'php/metodo02.php',
+            type: 'post',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                if (response != 0) {
+                    $(".card-img-top").attr("src", response);
+                    mostrarImagen(response);
+                } else {
+					alert('Formato de imagen incorrecto.');
+				}
+            }
+        });
+		return false;
+    });
+});
+</script>
+
+<!--Codigo de Script para el funcionamiento del metodo 03-->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+<script>
+$(document).ready(function() {
+    $(".upload3").on('click', function() {
+        var formData = new FormData();
+        var files = $('#imageM3')[0].files[0];
+        formData.append('file',files);
+        $.ajax({
+            url: 'php/metodo03.php',
+            type: 'post',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                if (response != 0) {
+                    //$(".card-img-top").attr("src", response);
+                    alert(response);
+                   // mostrarImagen(response);
+                } else {
+					alert('Formato de imagen incorrecto.');
+				}
+            }
+        });
+		return false;
+    });
+});
+</script>
+
 </head>
 <body>
     
@@ -29,7 +88,7 @@
 
     <!--  
     Metodo 02  
-
+      Subir la imagen con Ajax y dataform, se guarda la imagen en el servidor y la URL de las imagenes en la base de datos, se trabaja mediante url, no se guarda la imagen en la base de datos
   -->
   
 <center>
@@ -37,32 +96,64 @@
 
   <form method="post" action="#" enctype="multipart/form-data">
     <div class="card" style="width: 18rem;">
-        <img class="card-img-top" src="image/default-avatar.png">
-        <div class="card-body">
-            <p class="card-text">Sube una imagen...</p>
-            <div class="form-group">
-                <label for="image">Nueva imagen</label>
-                <input type="file" class="form-control-file" name="image" id="image">
-            </div>
-            <input type="button" class="btn btn-primary upload" value="Subir">
+      <img class="card-img-top" src="image/default-avatar.png">
+      <div class="card-body">
+        <div class="form-group">
+          <label for="imageM2">Sube una foto</label>
+          <input type="file" class="form-control-file" name="imageM2" id="imageM2">
         </div>
+        <input type="button" class="btn btn-primary upload" value="Subir">
+      </div>
+      <img class="mostrarImagenM2" src="image/default-avatar.png">
     </div>
   </form>
 
 </center>
 
 
-  // Metodo 03
+  <!--  
+    Metodo 03  
+      Subir la imagen con Ajax y dataform.
+      Similar al metodo 2, pero en este caso se guardara la imagen en la base de datos
+    -->
         
+    <center>
+      <h4 class="text-center">Metodo 03</h4>
+    
+      <img class="card-img-top" src="image/default-avatar.png" id="blah2">
+      <label for="imageM3">Sube una foto</label>
+      <input type="file" class="form-control-file" name="imageM3" id="imageM3">
+      <input type="button" class="btn btn-primary upload3" value="Subir">
 
-          <h4 class="text-center">Seleccione imagen a cargar</h4>
-        <div class="form-group">
-          <label class="col-sm-2 control-label">Archivos</label>
-          <div class="col-sm-8">
-            <input type="file" class="form-control" id="image" name="image" multiple>
-          </div>
-          <button name="submit" class="btn btn-primary">Cargar Imagen</button>
-        </div>
+
+
+    
+    </center>
+
+
+    <!-- Script para el metodo 3
+        Permite que la imagen se visualize una vez sea seleccionada
+    -->
+    <script>
+      function readURL(input) {
+      if (input.files && input.files[0]) { //Revisamos que el input tenga contenido
+          var reader = new FileReader(); //Leemos el contenido
+          
+          reader.onload = function(e) { //Al cargar el contenido lo pasamos como atributo de la imagen de arriba
+          $('#blah2').attr('src', e.target.result);
+          
+          }
+          
+          reader.readAsDataURL(input.files[0]);
+      }
+      }
+
+      $("#imageM3").change(function() { //Cuando el input cambie (se cargue un nuevo archivo) se va a ejecutar de nuevo el cambio de imagen y se verá reflejado.
+      readURL(this);
+      });
+   </script>
+
+        <script src="js/metodo02.js"></script>
 
 </body>
 </html>
