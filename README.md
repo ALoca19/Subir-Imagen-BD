@@ -25,3 +25,5 @@ En la carpeta php, crea un archivo php llamado conexion y pon el siguiente codig
 
 
 En los apartados de php, has las modificaciones pertinentes para que se adapte a la tabla donde subiras las imagenes
+
+La carpeta BD tiene la estrucutra de una tabla sencilla para que puedas calar el funcionamiento de los codigos.
